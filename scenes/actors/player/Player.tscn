@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/actors/Player.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/combat/StatsComponent.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/combat/HealthComponent.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 12.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1")
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3")
+stats_component_path = NodePath("../StatsComponent")
+
+[node name="AutoAttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ActiveSkillTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TrailRoot" type="Node2D" parent="."]
+
+[node name="SketchVisual" type="Node2D" parent="."]
+
+[node name="Body" type="Polygon2D" parent="SketchVisual"]
+polygon = PackedVector2Array(0, -16, 12, 10, -12, 10)
+color = Color(0.15, 0.15, 0.15, 0.9)

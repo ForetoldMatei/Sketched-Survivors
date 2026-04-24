@@ -1,0 +1,4 @@
+res://scenes/ui/menus/MainMenu.tscn
+res://scripts/perks.gd
+res://scripts/ui/menus/MainMenu.gd
+res://autoload/Game.gd

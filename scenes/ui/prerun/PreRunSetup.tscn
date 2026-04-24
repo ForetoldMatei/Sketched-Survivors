@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/prerun/PreRunSetup.gd" id="1"]
+
+[node name="PreRunSetup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.92, 0.92, 0.9, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prepare Your Run"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.12, 0.12, 0.14, 1)
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="ClassTab" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="ClassList" type="ItemList" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/ClassTab"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClassDescription" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/ClassTab"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Choose a class."
+theme_override_colors/font_color = Color(0.12, 0.12, 0.14, 1)
+
+[node name="PerksTab" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="SelectedPerksLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/PerksTab"]
+layout_mode = 2
+text = "Selected Perks"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.12, 0.12, 0.14, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/PerksTab"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PerkList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/PerksTab/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TalentsTab" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TalentHint" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/TalentsTab"]
+layout_mode = 2
+text = "Placeholder talent tree. Wire real nodes and effects later."
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.12, 0.12, 0.14, 1)
+
+[node name="TalentCanvas" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/TalentsTab"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomBar" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 42)
+text = "Back"
+
+[node name="BeginRunButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 42)
+text = "Begin Run"
+
+[connection signal="item_selected" from="MarginContainer/PanelContainer/VBoxContainer/TabContainer/ClassTab/ClassList" to="." method="_on_class_list_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/BottomBar/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/BottomBar/BeginRunButton" to="." method="_on_begin_run_button_pressed"]
