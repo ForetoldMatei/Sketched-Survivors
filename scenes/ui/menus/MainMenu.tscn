@@ -60,6 +60,11 @@ custom_minimum_size = Vector2(220, 48)
 layout_mode = 2
 text = "Settings"
 
+[node name="MinigameButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=123456789]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+text = "Minigame"
+
 [node name="ExitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2070181704]
 custom_minimum_size = Vector2(220, 48)
 layout_mode = 2
@@ -122,6 +127,7 @@ text = "Close"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MinigameButton" to="." method="_on_minigame_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="item_selected" from="SettingsPanel/MarginContainer/VBoxContainer/ResolutionOption" to="." method="_on_resolution_option_item_selected"]
 [connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
